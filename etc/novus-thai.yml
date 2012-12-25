@@ -1,0 +1,9 @@
+---
+novus-thai-root: __ROOT__
+schema_class: Novus::Thai::Schema
+connect_info:
+    - dbi:Pg:dbname=__DBNAME__;host=__HOSTNAME__
+    - __USERNAME__
+    - __PASSWORD__
+    - {AutoCommit: 1, pg_enable_utf: 1}
+
