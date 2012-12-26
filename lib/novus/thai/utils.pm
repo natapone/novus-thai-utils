@@ -94,6 +94,20 @@ sub trim {
     return $strin;
 }
 
+sub clean_context {
+    my($self, $content) = @_;
+    
+    # lower case
+    $content = lc($content);
+    
+    # Single space
+    $content =~ s/\s+/ /g;
+    
+    $content = $self->trim($content);
+    
+    return $content;
+}
+
 1;
 __END__
 
