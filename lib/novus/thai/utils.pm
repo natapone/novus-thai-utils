@@ -56,7 +56,11 @@ sub string_to_timestamp {
     my $parser_tz_name = new DateTime::Format::Strptime(pattern     => '%a, %d %B %Y %H:%M:%S %Z', );
                                                 
     my $parser_tz_num = new DateTime::Format::Strptime(pattern     => '%a, %d %B %Y %H:%M:%S %z', );
-                                                
+    
+    my $parser_mock_tz = new DateTime::Format::Strptime(pattern     => '%F %H:%M:%S',
+                                                    time_zone   => 'Asia/Bangkok',
+                                                    ); # Equivalent to %Y-%m-%d. (This is the ISO style date)
+    
     my $last_timestamp;
     
     if (!$last_timestamp) { # try time zone name
@@ -74,6 +78,12 @@ sub string_to_timestamp {
     if (!$last_timestamp) { # try no time zone
         try {
             $last_timestamp = $parser_no_tz->parse_datetime($str_date);
+        }
+    }
+    
+    if (!$last_timestamp) { # try mock time zone %Y-%m-%d
+        try {
+            $last_timestamp = $parser_mock_tz->parse_datetime($str_date);
         }
     }
     
