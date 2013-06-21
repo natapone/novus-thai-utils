@@ -5,5 +5,5 @@ connect_info:
     - dbi:Pg:database=thai_novus;host=localhost
     - postgres
     - dong
-    - {AutoCommit: 1, pg_enable_utf: 1}
+    - {AutoCommit: 1, pg_enable_utf8: 1}
 

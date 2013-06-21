@@ -5,5 +5,5 @@ connect_info:
     - dbi:Pg:dbname=__DBNAME__;host=__HOSTNAME__
     - __USERNAME__
     - __PASSWORD__
-    - {AutoCommit: 1, pg_enable_utf: 1}
+    - {AutoCommit: 1, pg_enable_utf8: 1}
 
