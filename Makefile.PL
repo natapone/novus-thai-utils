@@ -1,17 +1,27 @@
-use 5.014002;
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
-require Config::JFDI;
-require DateTime::Format::Strptime;
-require Try::Tiny;
+name 'novus-thai-utils';
+all_from 'lib/novus/thai/utils.pm';
+perl_version '5.006';
 
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
-WriteMakefile(
-    NAME              => 'novus::thai::utils',
-    VERSION_FROM      => 'lib/novus/thai/utils.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/novus/thai/utils.pm', # retrieve abstract from module
-       AUTHOR         => 'Dong <dong@>') : ()),
-);
+build_requires 'Perl::Critic' => '1.094';
+
+requires 'Bit::Compare';
+requires 'Config::JFDI';
+requires 'Cwd';
+requires 'DateTime::Format::Strptime';
+requires 'Try::Tiny';
+requires 'Exporter';
+
+test_requires 'Test::More';
+
+auto_install;
+
+novus_ignore('.git');
+novus_ignore('.gitignore');
+
+novus;
+
+#install_script glob('bin/*');
+
+WriteAll;
